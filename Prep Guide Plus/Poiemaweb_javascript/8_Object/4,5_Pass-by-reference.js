@@ -1,11 +1,11 @@
-// Pass-by-reference
+// 4. Pass-by-reference
 var a = {}, b = {}, c = {};
 console.log(a === b, a === c, b === c);
 
 a = b = c = {};
 console.log(a === b, a === c, b === c);
 
-// Pass-by-value
+// 5. Pass-by-value
 var a = 1;
 var b = a;
 
