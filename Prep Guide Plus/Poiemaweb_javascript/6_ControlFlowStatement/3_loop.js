@@ -26,7 +26,7 @@ while (count < 3) {
   count++;
 }
 
-console.log("=== do-while ===");
+// do while
 var count = 0;
 
 // count가 3보다 작을 때까지
@@ -35,7 +35,8 @@ do {
   count++;
 } while (count < 3);
 
-console.log("=== break ===");
+
+// break
 foo: console.log('foo');
 
 foo: {
@@ -55,7 +56,7 @@ outer: for (var i = 0; i < 3; i++) {
 
 console.log('Done!');
 
-console.log("=== continue ===");
+// continue
 var string = 'Hello World.';
 var count = 0;
 
@@ -67,3 +68,9 @@ for (var i = 0; i < string.length; i++) {
 console.log(count);
 
 console.log(string.match(/l/g).length); // 3
+
+// continue - for문
+for (var i = 0; i < string.length; i++) {
+  // 'l'이면 카운트를 증가시킨다.
+  if (string[i] === 'l') count++;
+}
