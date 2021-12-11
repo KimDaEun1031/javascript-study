@@ -1,7 +1,8 @@
+// 3. constructor Property
 function Person(name) {
-    this.name = name;
-  }
-  
+  this.name = name;
+}
+
 var foo = new Person('Lee');
 
 console.log(Person.prototype.constructor === Person);

@@ -9,12 +9,20 @@
 </head>
 <body>
   <script>
-     var arr = ['w', 'y', 'k', 'o', 'p'];
-var eArr = arr.values();
+     var x = 'global';
 
-for (let letter of eArr) {
-  console.log(letter);
+function foo() {
+  var x = 'local';
+  console.log(x);
+
+  function bar() {  // 내부함수
+    console.log("d"+x); // ?
+  }
+
+  bar();
 }
+foo();
+console.log("d"+x); // ?
   </script>
 </body>
 </html>

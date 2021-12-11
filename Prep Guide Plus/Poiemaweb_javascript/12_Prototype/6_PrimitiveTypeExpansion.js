@@ -1,3 +1,4 @@
+// 원시 타입의 확장
 var str = 'test';
 console.log(typeof str);                 
 console.log(str.constructor === String); 

@@ -1,3 +1,4 @@
+// 5. 프로토타입 객체의 확장
 function Person(name) {
     this.name = name;
   }
