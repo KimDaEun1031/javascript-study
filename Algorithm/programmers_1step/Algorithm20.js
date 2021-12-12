@@ -1,3 +1,5 @@
+// 20. 약수의 개수와 덧셈
+
 // 풀이
 function solution(left, right) {
     let answer = 0;
