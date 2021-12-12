@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <p>전역 변수를 사용한 Counting</p>
+  <button id="inclease">+</button>
+  <p id="count">0</p>
+  <script>
+    // 전역 변수를 사용한 예제
+    var incleaseBtn = document.getElementById('inclease');
+    var count = document.getElementById('count');
+
+    // 카운트 상태를 유지하기 위한 전역 변수
+    var counter = 0;
+
+    function increase() {
+      return ++counter;
+    }
+
+    incleaseBtn.onclick = function () {
+      count.innerHTML = increase();
+    };
+
+    // 지역 변수를 사용한 예제
+    var incleaseBtn = document.getElementById('inclease');
+    var count = document.getElementById('count');
+
+    function increase() {
+      // 카운트 상태를 유지하기 위한 지역 변수
+      var counter = 0;
+      return ++counter;
+    }
+
+    incleaseBtn.onclick = function () {
+      count.innerHTML = increase();
+    };
+
+    // 클로저를 사용한 예제
+    var incleaseBtn = document.getElementById('inclease');
+    var count = document.getElementById('count');
+
+    var increase = (function () {
+      // 카운트 상태를 유지하기 위한 자유 변수
+      var counter = 0;
+      // 클로저를 반환
+      return function () {
+        return ++counter;
+      };
+    }());
+
+    incleaseBtn.onclick = function () {
+      count.innerHTML = increase();
+    };
+
+    // 함수형 프로그래밍에서 클로저를 활용하는 예제
+    function makeCounter(predicate) {
+    var counter = 0;
+
+    return function () {
+        counter = predicate(counter);
+        return counter;
+    };
+    }
+
+    function increase(n) {
+    return ++n;
+    }
+
+    function decrease(n) {
+    return --n;
+    }
+
+    const increaser = makeCounter(increase);
+    console.log(increaser()); // 1
+    console.log(increaser()); // 2
+
+    const decreaser = makeCounter(decrease);
+    console.log(decreaser()); // -1
+    console.log(decreaser()); // -2
+  </script>
+</body>
+</html>
