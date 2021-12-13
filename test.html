@@ -9,7 +9,14 @@
 </head>
 <body>
   <script>
+    solution(64);
+    function solution(n) {
+      let x = Math.sqrt(n); 
+      console.log(x);  
 
+      console.log(Number.isInteger(x));  
+      return Number.isInteger(x) ? console.log(Math.pow(x + 1, 2)) : console.log(-1);
+    }
   </script>
 </body>
 </html>
