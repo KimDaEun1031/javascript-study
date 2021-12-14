@@ -8,30 +8,17 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="range-slider">
-    <input class="range-slider__range" type="range" value="100" min="0" max="500">
-    <span class="range-slider__value">0</span>
-  </div>
   <script>
-    var rangeSlider = function(){
-      var slider = $('.range-slider'),
-          range = $('.range-slider__range'),
-          value = $('.range-slider__value');
-        
-      slider.each(function(){
+    solution(5);
+    function solution(n) {
+        let arr = [];
+        for (let i = 0; i <= n; i++) {
+           if (n % i === 0) arr.push(i);
+        }
+        let answer = arr.reduce((acc, cur) => acc + cur, 0);
 
-        value.each(function(){
-          var rvalue = $(this).prev().attr('value');
-          $(this).html(rvalue);
-        });
-
-        range.on('input', function(){
-          $(this).next(value).html(this.value);
-        });
-      });
-    };
-
-    rangeSlider();
+    }
   </script>
+  
 </body>
 </html>
