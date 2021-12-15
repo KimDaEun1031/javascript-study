@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-<script>
-  solution(10)
+// 26. 소수 찾기
+
+// 풀이 - 시간초과
+// 큰 수일 경우 시간초과가 뜨고 효율성 테스트에서도 시간초과가 뜬다.
 function solution(n) {
-  let result = 0;
-  for (let i = 2; i <= n; i++) {
-    let count = 0;
-    for (let j = 1; j <= i; j++) {
-      if (i % j === 0) count++;
+    let result = 0;
+    for (let i = 2; i <= n; i++) {
+      let count = 0;
+      for (let j = 1; j <= i; j++) {
+        if (i % j === 0) count++;
+      }
+      if (count === 2) result++;
     }
-    if (count === 2) result++;
-  }
+  
+    return result;
+}
 
-  return result;
-
+// 다른 사람 풀이
+function solution(n) {
     // n = 10
     let arr = [];
     let cnt = 0;
@@ -29,6 +25,7 @@ function solution(n) {
     }
 
     // 정수는 false
+    // 1~10 소수 :  2, 3, 5, 7
     /*
       1번째 [true, true, true, true, false, true, true, true, true, true, true]
       2번째 [true, true, true, true, false, true, false, true, true, true, true]
@@ -53,7 +50,3 @@ function solution(n) {
 
     return cnt++;
 }
-</script>
-  
-</body>
-</html>
