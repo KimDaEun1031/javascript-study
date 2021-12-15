@@ -8,17 +8,13 @@
   <title>Document</title>
 </head>
 <body>
-  <script>
-    solution(5);
-    function solution(n) {
-        let arr = [];
-        for (let i = 0; i <= n; i++) {
-           if (n % i === 0) arr.push(i);
-        }
-        let answer = arr.reduce((acc, cur) => acc + cur, 0);
+<script>
+console.log('ä'.localeCompare('a', 'de', { sensitivity: 'base' })); 
 
-    }
-  </script>
+console.log('ä'.localeCompare('a', 'sv', { sensitivity: 'base' })); 
+
+console.log('a'.localeCompare('a'))
+</script>
   
 </body>
 </html>
