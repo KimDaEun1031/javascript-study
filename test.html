@@ -6,14 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
-<script>
-  const emptyArr = [];
-const emptyObj = {};
 
-console.dir(emptyArr.__proto__);
-console.dir(emptyObj.__proto__);
-</script>
-  
+<body>
+  <script>
+    solution(3, 5)
+    function solution(a, b) {
+      let answer = 0;
+      if (a < b) {
+        for (let i = a; i <= b; i++) {
+          answer += i;
+        }
+      }
+
+      if (a === b) return console.log(a);
+
+      if (a > b) {
+        for (let i = b; i <= a; i++) {
+          answer += i;
+        }
+      }
+
+      return console.log(answer);
+    }
+  </script>
 </body>
 </html>
