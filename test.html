@@ -9,24 +9,14 @@
 
 <body>
   <script>
-    solution(3, 5)
-    function solution(a, b) {
-      let answer = 0;
-      if (a < b) {
-        for (let i = a; i <= b; i++) {
-          answer += i;
-        }
-      }
-
-      if (a === b) return console.log(a);
-
-      if (a > b) {
-        for (let i = b; i <= a; i++) {
-          answer += i;
-        }
-      }
-
-      return console.log(answer);
+    solution(3, 30, 4)
+    function solution(price, money, count) {
+       let totalMoney = 0;
+       for (let i = 0; i <= count; i++) {
+         totalMoney += price * i;
+       }
+       let result = totalMoney - money;
+       return totalMoney - money <= 0 ? 0 : result;
     }
 
   </script>
