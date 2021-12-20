@@ -1,42 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>style 프로퍼티 값 취득</title>
-  <style>
-    .box {
-      width: 100px;
-      height: 50px;
-      background-color: red;
-      border: 1px solid black;
-    }
-  </style>
+  <title>Document</title>
 </head>
 <body>
-  <div class="box"></div>
   <script>
-    const box = document.querySelector('.box');
-
-    const width = getStyle(box, 'width');
-    const height = getStyle(box, 'height');
-    const backgroundColor = getStyle(box, 'background-color');
-    const border = getStyle(box, 'border');
-
-    console.log('width: ' + width);
-    console.log('height: ' + height);
-    console.log('backgroundColor: ' + backgroundColor);
-    console.log('border: ' + border);
-
-    /**
-     * 요소에 적용된 CSS 프로퍼티를 반환한다.
-     * @param {HTTPElement} elem - 대상 요소 노드.
-     * @param {string} prop - 대상 CSS 프로퍼티.
-     * @returns {string} CSS 프로퍼티의 값.
-     */
-    function getStyle(elem, prop) {
-      return window.getComputedStyle(elem, null).getPropertyValue(prop);
+    solution([[60, 50], [30, 70], [60, 30], [80, 40]]);
+    function solution(sizes){
+      let max = 0;
+      let min = 0;
+      
+      for(let len of sizes) {
+        if(len[0] > len[1]){ 
+          if(max < len[0]) max = len[0];
+          if(min < len[1]) min = len[1];
+        }
+        else {
+          if(max < len[1]) max = len[1];
+          if(min < len[0]) min = len[0];
+        }
+      };
+      return max * min;
     }
   </script>
 </body>
