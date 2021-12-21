@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button class="btn">Button</button>
+  <script>
+    // 5-3. addEventListener 메소드 방식
+    const btn = document.querySelector('.btn');
+
+    btn.addEventListener('click', function (e) {
+      console.log(this); // <button id="btn">Button</button>
+      console.log(e.currentTarget); // <button id="btn">Button</button>
+      console.log(this === e.currentTarget); // true
+    });
+  </script>
+</body>
+</html>

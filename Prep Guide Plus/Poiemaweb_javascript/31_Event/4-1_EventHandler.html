@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="myHandler()">Click me</button>
+  <button onclick="myHandler1(); myHandler2();">Click me</button>
+  <script>
+    // 4-1. 인라인 이벤트 핸들러 방식
+    function myHandler() {
+      alert('Button clicked!');
+    }
+
+    function myHandler1() {
+      alert('myHandler1');
+    }
+    function myHandler2() {
+      alert('myHandler2');
+    }
+  </script>
+</body>
+</html>

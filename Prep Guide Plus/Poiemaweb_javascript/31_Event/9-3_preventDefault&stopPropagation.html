@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <a href="http://www.google.com" onclick='return handleEvent()'>go</a>
+  <script>
+  //  onclick 사용
+  function handleEvent() {
+    return false;
+  }
+  </script>
+</body>
+</html>
+
+<!--  jQuery 사용 -->
+<!-- <!DOCTYPE html>
+<html>
+<body>
+  <div>
+    <a href="http://www.google.com">go</a>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+  <script>
+
+  // within jQuery
+  $('a').click(function (e) {
+    e.preventDefault(); // OK
+  });
+
+  $('a').click(function () {
+    return false; // OK -> e.preventDefault() & e.stopPropagation().
+  });
+
+  // pure js
+  document.querySelector('a').addEventListener('click', function(e) {
+    // e.preventDefault(); // OK
+    return false;       // NG!!!!!
+  });
+  </script>
+</body>
+</html> -->
