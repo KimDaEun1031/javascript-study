@@ -2,13 +2,20 @@
 <html>
 <body>
 <script>
-  solution(1, 24)
-  function solution(a, b) {
-      let days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-      let date = new Date(2016, a-1, b);
-      let day = date.getDay();
-      return days[day];
-  }
+  solution([5,0,2,7])
+  function solution(numbers) {
+    let arr = []
+
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = i + 1; j < numbers.length; j++) {
+            arr.push(numbers[i] + numbers[j])
+        }
+    }
+
+    let answer = [...new Set(arr)]
+
+    return console.log(answer.sort((a, b) => a - b)) 
+}
 </script>
 </body>
 </html>
