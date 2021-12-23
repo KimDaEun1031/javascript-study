@@ -1,21 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 <body>
-<script>
-  solution([5,0,2,7])
-  function solution(numbers) {
-    let arr = []
-
-    for (let i = 0; i < numbers.length; i++) {
-        for (let j = i + 1; j < numbers.length; j++) {
-            arr.push(numbers[i] + numbers[j])
-        }
-    }
-
-    let answer = [...new Set(arr)]
-
-    return console.log(answer.sort((a, b) => a - b)) 
-}
-</script>
 </body>
 </html>
