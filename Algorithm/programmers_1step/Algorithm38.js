@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-<script>
-  solution(5, [2, 1, 2, 6, 2, 4, 3, 3])
-  function solution(N, stages) {
+// 38. 실패율
+
+// 풀이
+function solution(N, stages) {
     let answer = [];
     let  total = [];
+    
     for(let i = 1;i <= N; i++){
         let count = 0;
         let players = 0;
@@ -34,8 +27,20 @@
     })
 
     return answer.map(item => item.stage)
+}
 
-  }
-</script>
-</body>
-</html>
+// filter() 사용해서 풀어보기
+function solution(N, stages) {
+    let answer = [];
+    let length = stages.length;
+    for (let i = 1; i <= N+1; i++) {				
+        let tmp = stages.filter(n => n === i).length;			
+        answer.push([i, tmp / length]);			
+        length -= tmp;
+    }
+		
+    answer.pop();		
+    answer = answer.sort((a,b) => b[1] - a[1]);
+    
+    return answer.map( a => a[0]);
+}
