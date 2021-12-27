@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // fetch() 사용해서 값 가져오기 (GET)
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(res => {
+                console.log(res);
+                return res.json();
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => {
+                console.log('Fetch Error', err);
+        });
+    </script>
+        
+    <script>
+        // fetch() 사용해서 값 가져오기 (POST)
+        fetch('https://jsonplaceholder.typicode.com/todos/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userId: 1,
+                id: 101,
+                title: 'test content',
+                completed: false,
+                }),
+            })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+        });
+    </script>
+        
+    <script>
+        // fetch() 사용해서 값 변경하기 (PUT)
+        fetch('https://jsonplaceholder.typicode.com/todos/1', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userId: 1,
+                id: 1,
+                title: 'test',
+                completed: true,
+                }),
+            })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+        });
+    </script>
+
+    <script>
+        //  fetch() 사용해서 부분 값 변경하기 (PATCH)
+            fetch('https://jsonplaceholder.typicode.com/todos/1', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                completed: true,
+                }),
+            })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+        });
+    </script>
+</body>
+</html>
