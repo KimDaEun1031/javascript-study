@@ -18,3 +18,16 @@ function solution(arr)
 {
     return arr.filter((val,index) => val != arr[index+1]);
 }
+
+// 다시 풀어보기 1 - 21/12/28
+function solution(arr) {
+    let result = arr.reduce((acc, cur) => {
+      let length = acc.length;
+      if (length === 0 || acc[length-1] !== cur) {
+        acc.push(cur);
+      }
+      return acc;
+    }, []);
+    
+    return result;
+  }
