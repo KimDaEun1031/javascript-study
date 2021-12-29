@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-<script>
-solution(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10]);
+// 40. 비밀지도
+
+// 풀이
 function solution(n, arr1, arr2) {
     let map1 = [];
     let map2 = [];
@@ -53,6 +45,26 @@ function solution(n, arr1, arr2) {
     return result;
 }
 
-</script>
-</body>
-</html>
+// 간단하게 풀어보기
+function solution(n, arr1, arr2) {
+    return arr1.map((v, i) => (v | arr2[i]).toString(2).padStart(n, '0').replace(/1|0/g, a => +a ? '#' : ' '));
+}
+
+// 내장함수 활용하지 않고 풀어보기
+function solution(n, arr1, arr2) {
+    let num1, num2, s;
+    let answer = [];
+    
+    for (let i=0; i<n; i++){
+        num1 = arr1[i];
+        num2 = arr2[i];
+        s = '';
+        for (let j=0; j<n; j++){
+            s = (num1%2 + num2%2) ? '#'+s : ' '+s;
+            num1 = Math.floor(num1/2);
+            num2 = Math.floor(num2/2);
+        }
+        answer.push(s);
+    }    
+    return answer;
+}
