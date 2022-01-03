@@ -9,3 +9,11 @@ function solution(n) {
     }
     return answer;
 }
+
+// 다시 풀어보기 1 - 22/01/03
+function solution(n) {
+    let result = [];
+    let str = String(n).split('').reverse();  
+    str.forEach(item => result.push(Number(item)));
+    return result;
+}
