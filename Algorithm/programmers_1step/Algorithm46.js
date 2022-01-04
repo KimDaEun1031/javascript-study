@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-<script>
-solution("z-+.^.")
+// 46. 신규 아이디 추천
+
+// 풀이
 function solution(new_id) {
 
     let first = new_id.toLowerCase();
@@ -51,6 +43,7 @@ function solution(new_id) {
     let sixth;
     if (fifth.length >= 16) {
       sixth = fifth.slice(0, 15);
+        
       if (/[.]$/g.test(sixth)) {
         sixth = sixth.replace(/[.]$/g, "");
       }
@@ -58,11 +51,11 @@ function solution(new_id) {
       sixth = fifth;
     }
 
-    console.log(sixth)
 
     let result;
     if (sixth.length <= 2) {
-        result = sixth.repeat(3);
+      result = sixth.repeat(3);
+        
       if (sixth.length === 2) {
         result = sixth.padEnd(3, sixth[1]);
       }
@@ -70,10 +63,19 @@ function solution(new_id) {
       result = sixth;
     }
 
-    console.log(result)
-
     return result;
 }
-</script>
-</body>
-</html>
+
+
+// 더 간결하게 풀어보기
+function solution(new_id) {
+    const answer = new_id
+        .toLowerCase() // 1
+        .replace(/[^\w-_.]/g, '') // 2
+        .replace(/\.+/g, '.') // 3
+        .replace(/^\.|\.$/g, '') // 4
+        .replace(/^$/, 'a') // 5
+        .slice(0, 15).replace(/\.$/, ''); // 6
+    const len = answer.length;
+    return len > 2 ? answer : answer + answer.charAt(len - 1).repeat(3 - len);
+}
