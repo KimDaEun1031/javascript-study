@@ -8,20 +8,14 @@
 </head>
 <body>
 <script>
-  solution(["marina", "josipa", "nikola", "vinko", "filipa"], ["josipa", "filipa", "marina", "nikola"])
-function solution(participant, completion) {
+solution([4,7,12], [true,false,true]	)
+function solution(absolutes, signs) {
+  let answer = 0;
+  signs.forEach((item, i) => {
+    item ? answer += absolutes[i] : answer -= absolutes[i];
+  })
 
-    let result = '';
-    participant.sort();
-    completion.sort();
-
-    
-    for (let i = 0; i < participant.length; i++) {
-      if (participant[i] !== completion[i]) {
-        result = participant[i];
-        return result;        
-      }
-    }
+  console.log(answer)
 }
 </script>
 </body>
