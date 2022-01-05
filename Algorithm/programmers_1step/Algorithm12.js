@@ -20,3 +20,8 @@ function solution(s){
     }  
     return false;
 }
+
+// 다시 풀어보기 1 - 22/01/05
+function solution(s) {
+    return s.toUpperCase().split("P").length === s.toUpperCase().split("Y").length;
+}

@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-<script>
-solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4])
+// 47. 크레인 인형뽑기 게임
+
+// 풀이
 function solution(board, moves) {
     const arr = moves.map(a => a - 1);
     let result = [];
@@ -36,9 +28,4 @@ function solution(board, moves) {
     });
 
     return answer;
-    
 }
-
-</script>
-</body>
-</html>
