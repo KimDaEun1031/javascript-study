@@ -8,44 +8,27 @@
 </head>
 <body>
 <script>
-  solution(2, 5)
-// function solution(n, m) {
-//     let answer = [];
-//     let max = 0;
-//     let min = 0;
+solution(["1.a", "2.a", "3.b", "4.c"])
+function solution(arr) {
 
-//     if (n < m) {
-//       max = m;
-//       min = n;
-//     } else {
-//       max = n;
-//       min = m
-//     }
+    let strArr = arr.map(obj => {
+      let array = [];
+      array.push(obj.split('.')[1]);
+      return array;
+    })
 
-//     function recursive(max, min) {
-//       if (max % min === 0) {
-//         return answer.push(min);
-//       } else {
-//         recursive(min, max % min);
-//       }
-//     }
+    let result = strArr.flat().reduce(function(all, str) {
+      if (str in all) {
+        all[str]++;
+      } else {
+        all[str] = 1;
+      }
+      return all;
+    }, {})
 
-//     recursive(max, min);
-//     console.log(max, min)
-//     answer.push(max * min / answer[0]);
-    
-//     return answer;
-// }
-function solution(n, m) {
-    let r, multiple;
-    
-    for (multiple = n * m; r = n % m; n = m, m = r) {}
-    let answer = [m, multiple/m];
+    console.log(result)
 
-    return answer;
 }
-
-
 
 </script>
 </body>
