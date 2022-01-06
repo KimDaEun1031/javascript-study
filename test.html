@@ -8,36 +8,44 @@
 </head>
 <body>
 <script>
-solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4])
-function solution(board, moves) {
-    const arr = moves.map(a => a - 1);
-    let result = [];
-    let answer = 0;
+  solution(2, 5)
+// function solution(n, m) {
+//     let answer = [];
+//     let max = 0;
+//     let min = 0;
 
-    arr.forEach(x => {
-      if (result.length >= 2) {
-        result.filter((arr, index) => {
-          if(arr === result[index + 1]) {
-            result.pop(arr);
-            result.pop(result[index + 1]);
-            answer += 2;
-          }
-        });
-      }
+//     if (n < m) {
+//       max = m;
+//       min = n;
+//     } else {
+//       max = n;
+//       min = m
+//     }
 
-      for (let i = 0; i < board.length; i++) {
-        if (board[i][x] === 0) continue;
-        else {
-          result.push(board[i][x]);
-          board[i][x] = 0;
-          break;
-        }
-      }
-    });
+//     function recursive(max, min) {
+//       if (max % min === 0) {
+//         return answer.push(min);
+//       } else {
+//         recursive(min, max % min);
+//       }
+//     }
+
+//     recursive(max, min);
+//     console.log(max, min)
+//     answer.push(max * min / answer[0]);
+    
+//     return answer;
+// }
+function solution(n, m) {
+    let r, multiple;
+    
+    for (multiple = n * m; r = n % m; n = m, m = r) {}
+    let answer = [m, multiple/m];
 
     return answer;
-    
 }
+
+
 
 </script>
 </body>
