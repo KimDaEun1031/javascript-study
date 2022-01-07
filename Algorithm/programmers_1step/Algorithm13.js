@@ -13,3 +13,10 @@ function solution(numbers) {
 function solution(numbers) {
     return 45 - numbers.reduce((cur, acc) => cur + acc, 0);
 }
+
+// 다시 풀어보기 1 - 22/01/06
+function solution(numbers) {
+    let sum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((a, b) => a + b);
+    numbers.forEach(num => sum -= num);
+    return sum;
+}

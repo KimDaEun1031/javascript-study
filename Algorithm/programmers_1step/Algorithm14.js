@@ -14,9 +14,7 @@ function solution(a, b) {
     return a.reduce((acc, _, i) => acc += a[i] * b[i], 0);
 }
 
-// 다시 풀어보기 1 - 22/01/06
-function solution(numbers) {
-    let sum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((a, b) => a + b);
-    numbers.forEach(num => sum -= num);
-    return sum;
+// 다시 풀어보기 1 - 22/01/07
+function solution(a, b) {
+    return a.reduce((acc, cur, index) => acc + (cur * b[index]), 0);
 }

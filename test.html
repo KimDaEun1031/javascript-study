@@ -8,26 +8,10 @@
 </head>
 <body>
 <script>
-solution(["1.a", "2.a", "3.b", "4.c"])
-function solution(arr) {
-
-    let strArr = arr.map(obj => {
-      let array = [];
-      array.push(obj.split('.')[1]);
-      return array;
-    })
-
-    let result = strArr.flat().reduce(function(all, str) {
-      if (str in all) {
-        all[str]++;
-      } else {
-        all[str] = 1;
-      }
-      return all;
-    }, {})
-
+  solution([-1,0,1], [1,0,-1])
+function solution(a, b) {
+    let result = a.reduce((acc, cur, index) => acc + (cur * b[index]), 0);
     console.log(result)
-
 }
 
 </script>
