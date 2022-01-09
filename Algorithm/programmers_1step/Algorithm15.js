@@ -16,3 +16,13 @@ function solution(nums) {
     
     return result.slice(0, max).length;
 }
+
+// // 다시 풀어보기 1 - 22/01/09
+function solution(nums) {
+    const max = nums.length / 2;
+
+    nums.sort();
+    let deduplication = Array.from(new Set(nums));
+
+    return deduplication.slice(0, max).length;
+}

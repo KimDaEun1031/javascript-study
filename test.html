@@ -8,10 +8,14 @@
 </head>
 <body>
 <script>
-  solution([-1,0,1], [1,0,-1])
-function solution(a, b) {
-    let result = a.reduce((acc, cur, index) => acc + (cur * b[index]), 0);
-    console.log(result)
+  solution([3,1,2,3])
+ function solution(nums) {
+    const max = nums.length / 2;
+
+    nums.sort();
+    let deduplication = Array.from(new Set(nums))
+
+    return deduplication.slice(0, max).length
 }
 
 </script>
