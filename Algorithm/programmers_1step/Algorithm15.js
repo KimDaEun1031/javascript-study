@@ -17,7 +17,7 @@ function solution(nums) {
     return result.slice(0, max).length;
 }
 
-// // 다시 풀어보기 1 - 22/01/09
+// 다시 풀어보기 1 - 22/01/09
 function solution(nums) {
     const max = nums.length / 2;
 

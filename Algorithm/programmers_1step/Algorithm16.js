@@ -35,3 +35,13 @@ function solution(s, n) {
     }
     return answer;
 }
+
+// 다시 풀어보기 1 - 22/01/10
+function solution(s, n) {
+    let answer = s.split('').map((str) => {
+      return str === ' ' ? ' ' : String.fromCharCode((str.charCodeAt() > 90) ?
+              (str.charCodeAt() + n - 97) % 26 + 97 : (str.charCodeAt() + n - 65) % 26 + 65); 
+    }).join('')
+      
+    return answer;
+}
