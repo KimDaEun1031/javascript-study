@@ -8,15 +8,10 @@
 </head>
 <body>
 <script>
-  solution("AB", 1)
-function solution(s, n) {
-
-  let answer = s.split('').map((str) => {
-    return str === ' ' ? ' ' : String.fromCharCode((str.charCodeAt() > 90) ?
-            (str.charCodeAt() + n - 97) % 26 + 97 : (str.charCodeAt() + n - 65) % 26 + 65); 
-  }).join('')
-  
-  return answer
+  solution(45)
+function solution(n) {
+    let result = String(n.toString(3)).split('').reverse().join('');
+    return parseInt(result, 3);
 }
 </script>
 </body>

@@ -11,3 +11,9 @@ function solution(n) {
     let str = String(n.toString(3)).split("").reverse().join("");   
     return parseInt(str, 3);  
 }
+
+// 다시 풀어보기 1 - 22/01/11
+function solution(n) {
+    let result = String(n.toString(3)).split('').reverse().join('');
+    return parseInt(result, 3);
+}
