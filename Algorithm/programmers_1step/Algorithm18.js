@@ -19,7 +19,7 @@ function solution(arr1, arr2) {
 	return arr1.map((e,i) => arr2[i].map((v,j) => arr1[i][j]+arr2[i][j])) 
 }
 
-// 다시 풀어보기 1 - 22/01/11
+// 다시 풀어보기 1 - 22/01/12
 function solution(arr1, arr2) { 
-	return arr1.map((a, i) => arr2[i].map((b, j) => arr1[i][j] + arr2[i][j])) 
+	return arr1.map((a, i) => arr2[i].map((b, j) => arr1[i][j] + arr2[i][j]));
 }

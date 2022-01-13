@@ -56,3 +56,16 @@ function solution(lottos, win_nums) {
 
     return answer;
 }
+
+// 다시 풀어보기 1 - 22/01/13
+function solution(lottos, win_nums) {
+    let answer = [];
+
+    let min = lottos.filter(lotto => win_nums.includes(lotto)).length;
+    let max = lottos.filter(lotto => lotto === 0).length + min;
+
+    max !== 0 ? answer.push(7 - max) : answer.push(6);
+    min !== 0 ? answer.push(7 - min) : answer.push(6);
+    
+    return answer;
+}
