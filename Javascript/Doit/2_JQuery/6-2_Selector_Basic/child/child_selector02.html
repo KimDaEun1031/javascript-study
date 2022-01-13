@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 자식 요소 선택자 01 </title>  
+<script src="/Javascript/Doit/2_JQuery/js/jquery.js"></script>
+<script>
+$(function(){
+	$( "div" ).children( ".selected" ).css( "color", "blue" );
+});
+</script>
+</head>
+<body>
+	<div>
+		<span>Hello</span>
+		<p class="selected">Hello Again</p>
+		<div class="selected">And Again</div>
+		<p>And One Last Time</p>
+	</div>
+</body>
+</html>
