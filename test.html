@@ -8,15 +8,22 @@
 </head>
 <body>
 <script>
-  solution([44, 1, 0, 0, 31, 25], [31, 10, 45, 1, 6, 19])
-function solution(lottos, win_nums) {
-    let answer = [];
+  solution(13, 17)
+function solution(left, right) {
+    let answer = 0;
+    
+    for (let i = left; i <= right; i++) {
+      let count = 0;
 
-    let min = lottos.filter(lotto => win_nums.includes(lotto)).length;
-    let max = lottos.filter(lotto => lotto === 0).length + min;
+      for (let j = 1; j <= right; j++) { 
 
-    max !== 0 ? answer.push(7 - max) : answer.push(6);
-    min !== 0 ? answer.push(7 - min) : answer.push(6);
+        if (i % j === 0) {
+          count++;
+        }
+      }
+      
+      count % 2 === 0 ? answer += i : answer -= i;
+    }
     
     return answer;
 }

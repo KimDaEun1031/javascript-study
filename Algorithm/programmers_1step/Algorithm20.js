@@ -28,3 +28,23 @@ function solution(left, right) {
     }
     return answer;
 }
+
+// 다시 풀어보기 1 - 22/01/14
+function solution(left, right) {
+    let answer = 0;
+    
+    for (let i = left; i <= right; i++) {
+      let count = 0;
+
+      for (let j = 1; j <= right; j++) { 
+
+        if (i % j === 0) {
+          count++;
+        }
+      }
+      
+      count % 2 === 0 ? answer += i : answer -= i;
+    }
+    
+    return answer;
+}

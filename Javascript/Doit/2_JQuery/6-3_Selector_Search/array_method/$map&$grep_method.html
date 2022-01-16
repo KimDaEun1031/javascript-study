@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> $.map / $.grep Method </title>  
+<script src="/Javascript/Doit/2_JQuery/js/jquery.js"></script>
+<script>
+$(function(){
+	var arr1 = [{
+		"area":"서울", 
+		"name":"무대리"
+		},{
+			"area":"부산", 
+			"name":"홍과장"
+		},{
+			"area":"대전", 
+			"name":"박사장"
+		},{
+			"area":"서울", 
+			"name":"빅마마"
+		}];
+	
+	console.log('--map--')
+	var arr2 = $.map(arr1, function(a, b) {
+		if (a.area == "서울") return a;
+	});
+	console.log(arr2);
+
+	console.log('--grep--')
+	var arr3 = $.grep(arr1, function(a, b) {
+		if (a.area == "서울") return true;
+		else return false;
+	});
+	console.log(arr3);
+  
+});
+</script>
+</head>
+<body>
+</body>
+</html>
