@@ -8,24 +8,9 @@
 </head>
 <body>
 <script>
-  solution(13, 17)
-function solution(left, right) {
-    let answer = 0;
-    
-    for (let i = left; i <= right; i++) {
-      let count = 0;
-
-      for (let j = 1; j <= right; j++) { 
-
-        if (i % j === 0) {
-          count++;
-        }
-      }
-      
-      count % 2 === 0 ? answer += i : answer -= i;
-    }
-    
-    return answer;
+solution(10)
+function solution(n) {
+    return n === 0 ? '' : solution(parseInt((n - 1) / 3)) + [1, 2, 4][(n - 1) % 3];
 }
 </script>
 </body>
