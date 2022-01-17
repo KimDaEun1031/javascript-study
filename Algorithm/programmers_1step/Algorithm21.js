@@ -17,3 +17,11 @@ function solution(arr) {
   
     return arr;
 }
+
+// 다시 풀어보기 1 - 22/01/17
+function solution(arr) {
+    let result = arr.filter(item => item !== Math.min(...arr));
+    if (result.length <= 0) result.push(-1)
+    
+    return result;
+}
