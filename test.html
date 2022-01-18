@@ -8,7 +8,11 @@
 </head>
 <body>
 <script>
-console.log(6 % 3)
+  solution(121)
+function solution(n) {
+    let num = Math.sqrt(n);
+    return Number.isInteger(num) ? Math.pow(num + 1, 2) : -1;
+}
 </script>
 </body>
 </html>
