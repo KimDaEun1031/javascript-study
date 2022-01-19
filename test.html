@@ -8,10 +8,9 @@
 </head>
 <body>
 <script>
-  solution(121)
-function solution(n) {
-    let num = Math.sqrt(n);
-    return Number.isInteger(num) ? Math.pow(num + 1, 2) : -1;
+  solution(118372)
+function solution(n) {  
+  return Number.parseInt(String(n).split('').sort().reverse().join(''));
 }
 </script>
 </body>
