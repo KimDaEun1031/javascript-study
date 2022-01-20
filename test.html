@@ -8,9 +8,17 @@
 </head>
 <body>
 <script>
-  solution(118372)
-function solution(n) {  
-  return Number.parseInt(String(n).split('').sort().reverse().join(''));
+  solution(12)
+function solution(n) {
+    let array = [];
+    for (let i = 0; i <= n; i++) {
+      console.log(n % i === 0)
+      if (n % i === 0) array.push(i);
+    }
+    console.log(array)
+
+    let answer = array.reduce((acc, cur) => acc + cur, 0);
+    console.log(answer)
 }
 </script>
 </body>
