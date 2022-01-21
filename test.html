@@ -8,17 +8,23 @@
 </head>
 <body>
 <script>
-  solution(12)
+  solution(10)
 function solution(n) {
-    let array = [];
-    for (let i = 0; i <= n; i++) {
-      console.log(n % i === 0)
-      if (n % i === 0) array.push(i);
+    let arr = [];
+    
+    for(let i = 2; i <= n; i++) {
+        arr[i] = i;
     }
-    console.log(array)
+    
+    for(let i = 2; i <= n; i++) {
+        if(arr[i] === 0) continue;
 
-    let answer = array.reduce((acc, cur) => acc + cur, 0);
-    console.log(answer)
+        for(let j = i * 2; j <= n; j += i) {
+            arr[j] = 0;
+        }
+    }
+
+    return arr.filter(v => v !== 0).length;
 }
 </script>
 </body>
