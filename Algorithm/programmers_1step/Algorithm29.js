@@ -25,3 +25,24 @@ function solution(a, b){
     // 양 끝의 합 * 양 끝의 합의 개수
     return (a+b)*(Math.abs(b-a)+1)/2;
 }
+
+// 다시 풀어보기 1 - 22/01/25
+function solution(a, b) {
+
+  let answer = 0;
+
+  if (a < b) {
+    for (let i = a; i <= b; i++) {
+      answer += i;
+    }
+  } else if (a === b) {
+    return a;
+  } else {
+    for (let i = b; i <= a; i++) {
+      answer += i;
+    }
+  }
+
+  return answer;
+  
+}
