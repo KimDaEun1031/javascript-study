@@ -8,26 +8,30 @@
 </head>
 <body>
 <script>
-solution(3, 5)
-function solution(a, b) {
+console.log(solution([1, 1, 9, 1, 1, 1], 0))
+function solution(priorities, location) {
 
-  let answer = 0;
+    let list = priorities.map((element, index) => ({
+        isMe: index === location,
+        val: element,
+    }));
 
-  if (a < b) {
-    for (let i = a; i <= b; i++) {
-      answer += i;
+    let count = 0;
+
+    while (true) {
+        let firstPage = list.shift();
+
+        if (list.some((element) => element.val > firstPage.val)) {
+            list.push(firstPage);
+        } else {
+          count++;
+
+          if (firstPage.isMe) return count;
+        }
     }
-  } else if (a === b) {
-    return a;
-  } else {
-    for (let i = b; i <= a; i++) {
-      answer += i;
-    }
-  }
-
-  return answer;
-  
+    
 }
+
 </script>
 </body>
 </html>
