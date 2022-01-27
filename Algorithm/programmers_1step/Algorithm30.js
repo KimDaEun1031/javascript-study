@@ -8,3 +8,11 @@ function solution(arr, divisor) {
 
     return result;
 }
+
+// 다시 풀어보기 1 - 22/01/27
+function solution(arr, divisor) {
+    let result = arr.filter(item => item % divisor === 0).sort((a, b) => a - b);
+
+    if (result.length === 0) return [-1];
+    return result;
+}
