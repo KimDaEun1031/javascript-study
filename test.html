@@ -8,43 +8,16 @@
 </head>
 <body>
 <script>
-console.log(solution("100-200*300-500+20"));
-function solution(expression) {
-  function calculator(a, b, oper) {
-    if (oper === "+") return a + b;
-    if (oper === "*") return a * b;
-    if (oper === "-") return a - b;
-  }
-  const combinations = [
-    ["+", "*", "-"],
-    ["+", "-", "*"],
-    ["*", "+", "-"],
-    ["*", "-", "+"],
-    ["-", "*", "+"],
-    ["-", "+", "*"],
-  ];
-  let answer = Number.MIN_SAFE_INTEGER;
+console.log(solution(["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]));
+function solution(n, words) {
+ let answer = 0;
+    words.reduce((prev, now, idx) => {
+        answer = answer || ((words.slice(0, idx).indexOf(now) !== -1 || prev !== now[0]) ? idx : answer);
+        return now[now.length - 1];
+    }, "")
 
-  combinations.forEach((combination) => {
-    const operands = expression.match(/[0-9]+/g).map(Number);
-    const operators = expression.match(/[\*\+\-]/g);
-    combination.forEach((c) => {
-      let idx = operators.indexOf(c);
-      
-      while (idx !== -1) {
-        operands[idx] = calculator(operands[idx], operands[idx + 1], c);
-        operands.splice(idx + 1, 1);
-        operators.splice(idx, 1);
-        idx = operators.indexOf(c);
-      }
-    });
-
-    if (answer < Math.abs(operands[0])) answer = Math.abs(operands[0]);
-  });
-
-  return answer;
+    return answer ? [answer % n + 1, Math.floor(answer / n) + 1] : [0, 0];
 }
-
 </script>
 </body>
 </html>
