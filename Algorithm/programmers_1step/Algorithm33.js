@@ -7,3 +7,12 @@ function solution(a, b) {
     let day = date.getDay();
     return days[day];
 }
+
+
+// 다시 풀어보기 1 - 22/02/01
+function solution(a, b) {
+  const day = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const date = new Date(`2016 ${a} ${b}`);
+
+  return day.find((element, i) => i === date.getDay());
+}

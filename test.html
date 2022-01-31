@@ -8,23 +8,12 @@
 </head>
 <body>
 <script>
-console.log(solution([[60, 50], [30, 70], [60, 30], [80, 40]]));
-function solution(sizes) {
-    const low = [];
-    const high = [];
-
-    sizes.map(([i, j]) => {
-      if (i > j) {
-        low.push(i);
-        high.push(j);
-      } else {
-        low.push(j);
-        high.push(i);
-      }
-      
-    });
-
-    return Math.max(...high) * Math.max(...low);
+console.log(solution(5, 24));
+function solution(a, b) {
+  const day = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const date = new Date(`2016 ${a} ${b}`);
+  
+  return day.find((element, i) => i === date.getDay());
 }
 </script>
 </body>
