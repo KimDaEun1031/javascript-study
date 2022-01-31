@@ -17,3 +17,22 @@ function solution(sizes) {
     };
     return max * min;
 }
+
+// 다시 풀어보기 1 - 22/01/31
+function solution(sizes) {
+  const low = [];
+  const high = [];
+
+  sizes.map(([i, j]) => {
+    if (i > j) {
+      low.push(i);
+      high.push(j);
+    } else {
+      low.push(j);
+      high.push(i);
+    }
+    
+  });
+
+  return Math.max(...high) * Math.max(...low);
+}
