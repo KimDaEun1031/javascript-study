@@ -8,30 +8,32 @@
 </head>
 <body>
 <script>
-console.log(solution(80, [[80,20],[50,40],[30,10]]));
-function solution(k, dungeons) {
-  let check = [];
-  let result = 0;
+console.log(solution(2, 4, 2, 1));
+function solution(n, t, m, p) {
+  let answer = '';
+  let str = '';
+  let num = 0;
 
-  dfs(k, dungeons, 0);
-  console.log(check)
-  
-  function dfs(k, arr, count) {
-    for (let i = 0; i < arr.length; i++) {  
-      debugger;
-      if (!check[i] && arr[i][0] <= k) {
-        check[i] = true;
-        dfs(k - arr[i][1], arr, count + 1);
-        check[i] = false;
-      }
-    }
-
-    result = Math.max(result, count);
+  while(str.length <= t * m) {
+    str += num.toString(n).toUpperCase();
+    num ++;
   }
 
-  return result;
 
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (count === t)
+      break;
+    if (i % m === p - 1){
+      answer += str[i];
+      count ++;
+    }
+  }
+
+  return answer;
 }
+
+
 
 </script>
 </body>
