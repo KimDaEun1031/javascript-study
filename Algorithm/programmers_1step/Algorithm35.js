@@ -25,3 +25,20 @@ function solution(d, budget) {
 
     return d.length;
 }
+
+// 다시 풀어보기 1 - 22/02/06
+function solution(d, budget) {
+    let result = 0;
+    let sum = 0;
+  
+    d.sort((a, b) => a - b);
+  
+    for (let i = 0; i < d.length; i++) {
+      result++;
+      sum += d[i];
+  
+      if (sum > budget) result--;
+    }
+  
+    return result;
+}
