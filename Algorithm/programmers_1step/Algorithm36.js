@@ -19,3 +19,15 @@ function solution(array, commands) {
     })
     return answer;
 }
+
+// 다시 풀어보기 1 - 22/02/07
+function solution(array, commands) {
+    let result = [];
+  
+    for (let i = 0; i < commands.length; i++) {
+      let str = array.slice(commands[i][0] - 1, commands[i][1]).sort((a, b) => a - b);
+      result.push(str[commands[i][2] - 1]);
+    }
+  
+    return result;
+}
