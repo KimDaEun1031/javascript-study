@@ -40,3 +40,23 @@ function solution(answers) {
 
     return answer;
 }
+
+// 다시 풀어보기 1 - 22/02/07
+function solution(answers) {
+  let one = [1, 2, 3, 4, 5];
+  let two = [2, 1, 2, 3, 2, 4, 2, 5];
+  let three = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+  let result = [];
+
+  let countA = answers.filter((val, i) => val === one[i % one.length]).length;
+  let countB = answers.filter((val, i) => val === two[i % two.length]).length;
+  let countC = answers.filter((val, i) => val === three[i % three.length]).length;
+
+  let max = Math.max(countA, countB, countC);
+
+  if (countA === max) result.push(1);
+  if (countB === max) result.push(2);
+  if (countC === max) result.push(3);
+
+  return result;
+}
