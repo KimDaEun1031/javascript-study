@@ -41,7 +41,7 @@ function solution(answers) {
     return answer;
 }
 
-// 다시 풀어보기 1 - 22/02/07
+// 다시 풀어보기 1 - 22/02/08
 function solution(answers) {
   let one = [1, 2, 3, 4, 5];
   let two = [2, 1, 2, 3, 2, 4, 2, 5];

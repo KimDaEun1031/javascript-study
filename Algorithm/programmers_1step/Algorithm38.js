@@ -44,3 +44,17 @@ function solution(N, stages) {
     
     return answer.map( a => a[0]);
 }
+
+// 다시 풀어보기 1 - 22/02/09
+function solution(N, stages) {
+    let result = [];
+  
+    for (let i = 1; i <= N; i++) {
+      let denominator = stages.filter((x) => x >= i).length;
+      let numerator = stages.filter((x) => x === i).length;
+      result.push([i, numerator / denominator]);
+    }
+  
+    result.sort((a, b) => b[1] - a[1]);
+    return result.map(item => item[0]);
+}
