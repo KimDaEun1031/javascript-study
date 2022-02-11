@@ -68,3 +68,47 @@ function solution(n, arr1, arr2) {
     }    
     return answer;
 }
+
+// 다시 풀어보기 1 - 22/02/11
+function solution(n, arr1, arr2) {
+  let map1 = forEachItem(arr1);
+  let map2 = forEachItem(arr2);
+  let result = [];
+
+  for (let i = 0; i < n; i++) {
+    let arr = [];
+
+    for (let j = 0; j < n; j++) {
+
+      if (map1[i][j] === '0' && map2[i][j] === '0') {
+        arr[j] = ' ';  
+      } else {
+        arr[j] = '#'; 
+      }
+    }
+
+    result.push(arr.join(''));
+  }
+
+  function forEachItem(arr) {
+    let map = [];
+    arr.forEach(item => {
+      let binary = item.toString(2).split('');
+      
+      if (binary.length !== n) {
+        let length = n - binary.length;
+
+        for (let i = 0; i < length; i++) {
+          binary.unshift("0");
+        }
+
+        map.push(binary);
+
+      } else map.push(binary);     
+    });
+
+    return map;
+  }
+
+  return result;
+}
