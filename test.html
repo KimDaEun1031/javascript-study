@@ -8,50 +8,54 @@
 </head>
 <body>
 <script>
-console.log(solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]));
-function solution(n, arr1, arr2) {
-  let map1 = forEachItem(arr1);
-  let map2 = forEachItem(arr2);
-  let result = [];
+console.log(solution("011"));
+function solution(numbers) {
+  let answer = 0;
 
-  for (let i = 0; i < n; i++) {
-    let arr = [];
+  numbers = numbers.split('');
 
-    for (let j = 0; j < n; j++) {
+  const getPermutations = function (arr, num) {
+    const result = [];
 
-      if (map1[i][j] === '0' && map2[i][j] === '0') {
-        arr[j] = ' ';  
-      } else {
-        arr[j] = '#'; 
-      }
-    }
+    if (num === 1) return arr.map(element => [element]);
 
-    result.push(arr.join(''));
-  }
+    arr.forEach((item, index, array) => {
+      const rest = [...array.slice(0, index), ...array.slice(index + 1)];
+      const permutations = getPermutations(rest, num - 1);
+      const attached = permutations.map(element => [item, ...element]);
 
-  function forEachItem(arr) {
-    let map = [];
-    arr.forEach(item => {
-      let binary = item.toString(2).split('');
-      
-      if (binary.length !== n) {
-        let length = n - binary.length;
-
-        for (let i = 0; i < length; i++) {
-          binary.unshift("0");
-        }
-
-        map.push(binary);
-
-      } else map.push(binary);     
+      result.push(...attached);
     });
 
-    return map;
+    return result;
   }
 
-  return result;
-}
+  const isPrime = function (num) {
+    if (num === 2 || num === 3) return true;
+    if (num === 0 || num === 1) return false;
 
+    for (let i = 2; i <= num / 2; i++) {
+      if (num % i === 0) return false;
+    }
+
+    return true;
+  }
+
+  let arr = [];
+
+  for (let i = 1; i <= numbers.length; i++) {
+    let combi = getPermutations(numbers, i);
+    arr.push(...combi);
+  }
+
+  let flatArr = [...new Set(arr.flatMap(item => Number(item.join(''))))];
+
+  for (let val of flatArr) {
+    if (isPrime(val)) answer++;
+  }
+
+  return answer;
+}
 </script>
 </body>
 </html>
