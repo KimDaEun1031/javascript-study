@@ -8,53 +8,50 @@
 </head>
 <body>
 <script>
-console.log(solution("011"));
-function solution(numbers) {
-  let answer = 0;
-
-  numbers = numbers.split('');
-
-  const getPermutations = function (arr, num) {
+console.log(solution([1,2,7,6,4]));
+function solution(nums) {
+  const getPermutations = function (arr, len = arr.length) {
     const result = [];
+    if (len === 1) return arr.map(element => [element]);
 
-    if (num === 1) return arr.map(element => [element]);
+    arr.forEach((cur, index) => {
+      const permutations = getPermutations(arr.slice(index + 1), len - 1);
 
-    arr.forEach((item, index, array) => {
-      const rest = [...array.slice(0, index), ...array.slice(index + 1)];
-      const permutations = getPermutations(rest, num - 1);
-      const attached = permutations.map(element => [item, ...element]);
-
-      result.push(...attached);
+      permutations.forEach(item => {
+        result.push([cur, ...item]);
+      })
     });
 
     return result;
-  }
+  };
 
   const isPrime = function (num) {
-    if (num === 2 || num === 3) return true;
-    if (num === 0 || num === 1) return false;
+    const arr = [];
 
-    for (let i = 2; i <= num / 2; i++) {
-      if (num % i === 0) return false;
+    for (let i = 2; i <= num; i++) {
+      arr.push(i);
     }
 
-    return true;
-  }
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (arr[i] === 0) continue;
 
-  let arr = [];
+      for(let j = i + i; j <= num; j += i) {
+        arr[j] = 0;
+      }
+    }
 
-  for (let i = 1; i <= numbers.length; i++) {
-    let combi = getPermutations(numbers, i);
-    arr.push(...combi);
-  }
+    return arr;
+  };
 
-  let flatArr = [...new Set(arr.flatMap(item => Number(item.join(''))))];
+  const getElementSum = function (arr) {
+    return arr.map(item => item.reduce((acc, cur) => acc + cur));
+  };
 
-  for (let val of flatArr) {
-    if (isPrime(val)) answer++;
-  }
+  const resultArr = getPermutations(nums, 3);
+  const sum = getElementSum(resultArr);
+  const prime = isPrime(Math.max(...sum));
 
-  return answer;
+  return sum.filter(item => prime[item] !== 0).length;
 }
 </script>
 </body>
