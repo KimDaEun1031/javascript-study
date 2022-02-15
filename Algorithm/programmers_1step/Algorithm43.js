@@ -27,3 +27,16 @@ function solution(s) {
     .replace(/nine/gi, 9)
     return parseInt(s);
 }
+
+// 다시 풀어보기 1 - 22/02/15
+function solution(s) {
+  const numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+  let str = s;
+
+  for (let i = 0; i < numbers.length; i++) {
+    const num = str.split(numbers[i]);
+    str = num.join(i);
+  }
+
+  return Number(str);
+}
