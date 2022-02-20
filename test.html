@@ -8,38 +8,60 @@
 </head>
 <body>
 <script>
-console.log(solution("aabbaccc"));
-function solution(s) {
-  let left = '';
-  let right = '';
-  let result = [];
+console.log(solution("CC#BCC#BCC#",  ["03:00,03:08,FOO,CC#B"]));
+function solution(m, musicinfos) {
 
-  for (let i = 1; i < Math.ceil(s.length / 2) + 1; i++) {
-    result.push([]);
-    let count = 1;
-
-    for (let j = 0; j < s.length; j++) {
-      left = s.substr(j * i, i);
-      right = s.substr((j * i) + i, i);
-      
-      if (left === right) count++;    
-      else {
-        count > 1 ? result[i - 1] += String(count) + left : result[i - 1] += left;
-        count = 1;
-      }
-    }
-  }
+  function getPlayTime(musicinfos) { 
+    const musicinfo = musicinfos.split(','); 
+    let start = musicinfo[0].split(':'); 
+    let end = musicinfo[1].split(':');
+    
+    return ( (end[0] * 60 + end[1] * 1) - (start[0] * 60 + start[1] * 1) ); 
+  } 
   
-  let min = result[0].length;
-
-  for (let i in result) {
-    if (min > result[i].length) {
-      min = result[i].length;
-    }
+  function makeMelody(musicinfos) { 
+    const section = musicinfos.split(',')[3]; 
+    const playtime = getPlayTime(musicinfos); 
+    let melody = '';
+    let i = 0;
+    let count = 0; 
+    
+    while(count < playtime) { 
+      i %= section.length; 
+      melody += section[i]; 
+      
+      if (section[i + 1] == '#') { 
+        melody += section[i + 1]; 
+        ++i; 
+      }
+      
+      ++i; ++count; 
+    } 
+    
+    return melody; 
   }
-
-  return min;
+   
+  const matchedIdx = musicinfos.reduce((acc, cur, i) => { 
+    let melody = makeMelody(cur); 
+    
+    if (m[m.length - 1] != '#') 
+      melody = melody.replace(RegExp(m + '#', 'g'), ''); 
+    
+    if (RegExp(m).test(melody)) acc.push(i);
+    
+    return acc; 
+  }, []); 
+  
+  if (matchedIdx.length == 0) return '(None)'; 
+  if (matchedIdx.length == 1) return musicinfos[matchedIdx[0]].split(',')[2]; 
+  
+  const max = matchedIdx.reduce((acc, cur) => getPlayTime(musicinfos[acc]) <= getPlayTime(musicinfos[cur]) ? cur : acc);
+  const maxTitle = matchedIdx.filter(idx => getPlayTime(musicinfos[idx]) == getPlayTime(musicinfos[max])); 
+  
+  return musicinfos[maxTitle[0]].split(',')[2];
 }
+
+// 6, 7, 9, 13, 21
 </script>
 </body>
 </html>
