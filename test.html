@@ -8,60 +8,17 @@
 </head>
 <body>
 <script>
-console.log(solution("CC#BCC#BCC#",  ["03:00,03:08,FOO,CC#B"]));
-function solution(m, musicinfos) {
+console.log(solution(["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"]));
+function solution(participant, completion) {
+  participant.sort();
+  completion.sort();
 
-  function getPlayTime(musicinfos) { 
-    const musicinfo = musicinfos.split(','); 
-    let start = musicinfo[0].split(':'); 
-    let end = musicinfo[1].split(':');
-    
-    return ( (end[0] * 60 + end[1] * 1) - (start[0] * 60 + start[1] * 1) ); 
-  } 
-  
-  function makeMelody(musicinfos) { 
-    const section = musicinfos.split(',')[3]; 
-    const playtime = getPlayTime(musicinfos); 
-    let melody = '';
-    let i = 0;
-    let count = 0; 
-    
-    while(count < playtime) { 
-      i %= section.length; 
-      melody += section[i]; 
-      
-      if (section[i + 1] == '#') { 
-        melody += section[i + 1]; 
-        ++i; 
-      }
-      
-      ++i; ++count; 
-    } 
-    
-    return melody; 
+  for (let i = 0; i < participant.length; i++) {
+    if (participant[i] !== completion[i]) {
+      return participant[i];
+    }
   }
-   
-  const matchedIdx = musicinfos.reduce((acc, cur, i) => { 
-    let melody = makeMelody(cur); 
-    
-    if (m[m.length - 1] != '#') 
-      melody = melody.replace(RegExp(m + '#', 'g'), ''); 
-    
-    if (RegExp(m).test(melody)) acc.push(i);
-    
-    return acc; 
-  }, []); 
-  
-  if (matchedIdx.length == 0) return '(None)'; 
-  if (matchedIdx.length == 1) return musicinfos[matchedIdx[0]].split(',')[2]; 
-  
-  const max = matchedIdx.reduce((acc, cur) => getPlayTime(musicinfos[acc]) <= getPlayTime(musicinfos[cur]) ? cur : acc);
-  const maxTitle = matchedIdx.filter(idx => getPlayTime(musicinfos[idx]) == getPlayTime(musicinfos[max])); 
-  
-  return musicinfos[maxTitle[0]].split(',')[2];
 }
-
-// 6, 7, 9, 13, 21
 </script>
 </body>
 </html>
