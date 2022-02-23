@@ -8,16 +8,28 @@
 </head>
 <body>
 <script>
-console.log(solution(["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"]));
-function solution(participant, completion) {
-  participant.sort();
-  completion.sort();
+console.log(solution("TOBEORNOTTOBEORTOBEORNOT"));
+function solution(msg) {
+  let answer = [],
+      dictionary = [''].concat([...Array(26).keys()].map(v => String.fromCharCode(v + 65)));
 
-  for (let i = 0; i < participant.length; i++) {
-    if (participant[i] !== completion[i]) {
-      return participant[i];
+  while (msg.length) {
+    for (let i = dictionary.length - 1; i >= 0; i--) {
+      let characters = dictionary[i];
+
+      if (new RegExp('^' + characters).test(msg)) {
+        let newCharacter = msg.substr(0, characters.length + 1);
+
+        if (dictionary.indexOf(newCharacter) < 0) dictionary.push(newCharacter);
+
+        msg = msg.substr(characters.length);
+        answer.push(i);
+        break;
+      }
     }
   }
+
+  return answer;
 }
 </script>
 </body>
